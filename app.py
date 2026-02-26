@@ -12,8 +12,8 @@ from datetime import datetime
 # ================= CONFIG =================
 st.set_page_config(page_title="AI Travel Planner 🎒", layout="wide")
 
-GEMINI_API_KEY = "AIzaSyDIj7fB0Qigz_snkNhs8AD5Kt0XH7ZH7nA"
-ORS_API_KEY = "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6IjAzMDRhZDkwNzMxMzRhZGFiMTFmNTljOWYzMDI3NmZhIiwiaCI6Im11cm11cjY0In0="
+GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+ORS_API_KEY = st.secrets["ORS_API_KEY"]
 
 genai_client = genai.Client(api_key=GEMINI_API_KEY)
 ors_client = openrouteservice.Client(key=ORS_API_KEY)
@@ -231,4 +231,5 @@ if st.session_state.generated_plan:
             "Download Travel Plan as PDF 📄",
             f,
             file_name="AI_Travel_Plan.pdf"
+
         )
